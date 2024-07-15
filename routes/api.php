@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\KotaController;
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\MataKuliahController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,4 +21,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::put('/kota/{id}', [KotaController::class,'ubah']);
     Route::delete('/kota/{id}', [KotaController::class,'hapus']);
     Route::get('/propinsi', [KotaController::class,'propinsi']);
+    Route::apiResource('jurusan', JurusanController::class);
+    Route::apiResource('mata-kuliah', MataKuliahController::class);
 });
